@@ -5,15 +5,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+    import Vue from 'vue';
 
-@Component
-export default class HelloWorld extends Vue {
-  public results?: string[];
-
-  public async created() {
-    const r = await fetch('/api/values');
-    this.results = await r.json() as string[];
-  }
-}
+export default Vue.extend({
+    data() {
+        return {
+            results: [] as string[],
+        };
+    },
+    async created() {
+        const r = await fetch('/api/values');
+        this.results = await r.json() as string[];
+    }
+});
 </script>
