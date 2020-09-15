@@ -14,7 +14,7 @@ export default Vue.extend({
         };
     },
     async created() {
-        const r = await fetch('/api/values');
+        const r = await fetch(process.env.VUE_APP_APIPATH);
         this.results = await r.json() as string[];
     }
 });
